@@ -44,6 +44,10 @@ int main() {
     std::cout << "Value returned from empty pop: "
               << emptyResult << std::endl;
 
+    int emptyPeekResult = stack.peek();
+    std::cout << "Value returned from empty peek: "
+              << emptyPeekResult << std::endl;
+
     Stack fullStack;
 
     for (int i = 0; i < 100; i++) {
