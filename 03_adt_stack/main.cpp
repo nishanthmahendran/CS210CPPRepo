@@ -7,19 +7,57 @@
 #include <iostream>
 #include "Stack.h"
 
+
 int main() {
-    Stack s;
+    Stack stack;
 
-    s.push(10);
-    s.push(20);
-    s.push(30);
+    std::cout << "Is empty? "
+              << (stack.isEmpty() ? "yes" : "no") << std::endl;
 
-    std::cout << "Stack size: " << s.size() << std::endl;
-    std::cout << "Top: " << s.top() << std::endl;
+    stack.push(10);
+    stack.push(20);
+    stack.push(30);
 
-    s.pop();
-    std::cout << "After pop, top: " << s.top() << std::endl;
-    std::cout << "Is empty? " << (s.isEmpty() ? "yes" : "no") << std::endl;
+    std::cout << "Stack size after pushing: "
+              << stack.size() << std::endl;
+    std::cout << "Value at Top: "
+              << stack.peek() << std::endl;
+
+    int removedValue = stack.pop();
+
+    std::cout << "Popped value: "
+              << removedValue << std::endl;
+    std::cout << "New top value: "
+              << stack.peek() << std::endl;
+    std::cout << "Stack size after popping: "
+              << stack.size() << std::endl;
+
+
+    stack.pop();
+    stack.pop();
+
+    std::cout << "Is stack empty now? "
+              << (stack.isEmpty() ? "yes" : "no") << std::endl;
+
+    //This will show how my stack will handle a pop that is invalid
+    int emptyResult = stack.pop();
+    std::cout << "Value returned from empty pop: "
+              << emptyResult << std::endl;
+
+    Stack fullStack;
+
+    for (int i = 0; i < 100; i++) {
+        fullStack.push(i);
+    }
+
+    std::cout << "Is the second stack full? "
+              << (fullStack.isFull() ? "yes" : "no") << std::endl;
+
+    // This value should not be added because the stack is full.
+    fullStack.push(100);
+
+    std::cout << "Size after the extra push attempt: "
+              << fullStack.size() << std::endl;
 
     return 0;
 }
